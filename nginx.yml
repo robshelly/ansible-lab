@@ -1,43 +1,7 @@
 ---
-# hosts could have been "remote" or "all" as well
+# run locally here, yadda yadda yadda
 - hosts: remote
   become: yes
   become_user: root
-  vars:
-  - docroot: /var/www/serversforhacker.com.conf/public
-  tasks:
-  - name: Add Nginx Repository
-    apt_repository:
-      repo: ppa:nginx/stable
-      state: present
-    register: ppastable
-
-  - name: Install Nginx
-    apt:
-      pkg: nginx
-      state: installed
-      update_cache: true
-    when: ppastable|success
-    notify:
-      - Start Nginx
-  
-  - name: Create Web Root
-    file:
-      path: '{{ docroot }}'
-      mode: 775
-      state: directory
-      owner: www-data
-      group: www-data
-    notify:
-      - Reload Nginx
-
-  handlers:
-  - name: Start Nginx
-    service:
-      name: nginx
-      state: started
-  
-  - name: Reload Nginx
-    service:
-      name: nginx
-      state: reloaded
+  roles:
+  - nginx

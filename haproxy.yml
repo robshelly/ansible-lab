@@ -1,7 +1,7 @@
 ---
 # run locally here, yadda yadda yadda
-- hosts: remote
+- hosts: loadbalancer
   become: yes
   become_user: root
   roles:
-  - nginx
+  - haproxy

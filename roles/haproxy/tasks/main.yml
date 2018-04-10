@@ -1,0 +1,17 @@
+---
+  - name: Install HAProxy
+    apt:
+      pkg: haproxy
+      state: installed
+      update_cache: true
+    notify:
+    - Start HAProxy
+
+  - name: Update HAProxy config
+    template:
+      src: templates/haproxy.cfg 
+      dest: /etc/haproxy/haproxy.cfg
+      owner: root
+      group: root
+    notify:
+    - Reload HAProxy

@@ -1,0 +1,11 @@
+---
+# Handlers for HAProxy
+- name: Start HAProxy
+  service:
+    name: haproxy
+    state: started
+
+- name: Reload HAProxy
+  service:
+    name: haproxy
+    state: reloaded
