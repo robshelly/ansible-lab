@@ -1,0 +1,7 @@
+---
+# run locally here, yadda yadda yadda
+- hosts: remote
+  become: yes
+  become_user: root
+  roles:
+  - nginx
