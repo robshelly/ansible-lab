@@ -1,0 +1,15 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: false
+    user: root
+    pre_tasks:
+      - include_vars: ~/repos/ansible-lab/roles/provision-ec2-instance/vars/{{type}}.yml
+    roles:
+    - provision-ec2-instance
+    
+  - hosts: ec2hosts
+    become: yes
+    become_user: root
+    roles:
+    - nginx
