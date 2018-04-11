@@ -1,6 +1,5 @@
 ---
-# run locally here, yadda yadda yadda
-- hosts: remote
+- hosts: "{{hosts}}"
   become: yes
   become_user: root
   roles:

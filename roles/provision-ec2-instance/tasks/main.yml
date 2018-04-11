@@ -25,7 +25,7 @@
 
   - name: Add instances to host group
     add_host:
-      hostname: "{{ item.public_ip }}"
+      hostname: "{{ item.private_ip }}"
       ansible_user: "{{ ssh_user }}"
       ansible_ssh_private_key_file: "{{ ssh_key_path }}"
       ansible_python_interpreter: /usr/bin/python3
@@ -34,5 +34,5 @@
     with_items: "{{ ec2.instances }}"
 
   - name: Wait for the instances to boot by checking the ssh port
-    wait_for: host={{item.public_ip}} port=22 delay=60 timeout=320 state=started
+    wait_for: host={{item.private_ip}} port=22 delay=60 timeout=320 state=started
     with_items: "{{ ec2.instances }}"

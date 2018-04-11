@@ -4,6 +4,6 @@
     gather_facts: false
     user: root
     pre_tasks:
-      - include_vars: ~/repos/ansible-lab/roles/provision-ec2-instance/vars/{{type}}.yml
+      - include_vars: ~/ansible-lab/roles/provision-ec2-instance/vars/{{type}}.yml
     roles:
     - provision-ec2-instance
