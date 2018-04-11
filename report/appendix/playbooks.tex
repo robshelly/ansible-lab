@@ -1,0 +1,39 @@
+\section{Provision EC2 Instance Variable files} \label{playbooks}
+
+\begin{minipage}{\textwidth}
+  \begin{lstlisting}[caption={provision-ec2.yml},label=ec2-playbook,language=bash]
+    ---
+    - hosts: localhost
+    connection: local
+    gather_facts: false
+    user: root
+    pre_tasks:
+    - include_vars: ~/ansible-lab/roles/provision-ec2-instance/vars/{{type}}.yml
+    roles:
+    - provision-ec2-instance
+  \end{lstlisting}
+\end{minipage}
+
+\noindent
+\begin{minipage}{\textwidth}
+  \begin{lstlisting}[caption={nginx.yml},label=nginx-playbook,language=bash]
+    ---
+    - hosts: "{{hosts}}"
+    become: yes
+    become_user: root
+    roles:
+    - nginx
+  \end{lstlisting}
+\end{minipage}
+
+\noindent
+\begin{minipage}{\textwidth}
+  \begin{lstlisting}[caption={haproxy.yml},label=haproxy-playbook,language=bash]
+    ---
+    - hosts: "{{hosts}}"
+    become: yes
+    become_user: root
+    roles:
+    - haproxy
+  \end{lstlisting}
+\end{minipage}

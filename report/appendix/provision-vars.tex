@@ -1,0 +1,47 @@
+\section{Provision EC2 Instance Variable files} \label{provision-vars}
+
+\begin{minipage}{\textwidth}
+  \begin{lstlisting}[caption={provision-ec2-instance/vars/webserver.yml},label=webserver-vars,language=bash]
+  ---
+  ec2_keypair: "ansible"
+  ec2_security_group: "sg-73dbc209"
+  ec2_instance_type: "t2.micro"
+  ec2_image: "ami-f90a4880"
+  ec2_subnet_ids: ['subnet-6f1cb727']
+  ec2_region: "eu-west-1"
+  ec2_tag_Name: "ansible-lab-webserver"
+  ec2_tag_Type: "ansible-lab-webserver"
+  ec2_tag_Environment: "production"
+  ec2_volume_size: 8
+  assign_public_ip: no
+  host_group: webservers
+  instance_count: 2
+  ssh_user: ubuntu
+  ssh_key_path: ~/keypairs/ansible.pem
+  aws_profile: ansible
+\end{lstlisting}
+\end{minipage}
+
+
+\noindent
+\begin{minipage}{\textwidth}
+  \begin{lstlisting}[caption={provision-ec2-instance/vars/loadbalance.yml},label=loadbalancer-vars,language=bash]
+  ---
+  ec2_keypair: "ansible"
+  ec2_security_group: "sg-6cdcc516"
+  ec2_instance_type: "t2.micro"
+  ec2_image: "ami-f90a4880"
+  ec2_subnet_ids: ['subnet-a412b9ec']
+  ec2_region: "eu-west-1"
+  ec2_tag_Name: "ansible-lab-loadbalancer"
+  ec2_tag_Type: "ansible-lab-loadbalancer"
+  ec2_tag_Environment: "production"
+  ec2_volume_size: 8
+  assign_public_ip: yes
+  host_group: loadbalancer
+  instance_count: 1
+  ssh_user: ubuntu
+  ssh_key_path: ~/keypairs/ansible.pem
+  aws_profile: ansible
+  \end{lstlisting}
+\end{minipage}

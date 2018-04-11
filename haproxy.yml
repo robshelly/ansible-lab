@@ -1,5 +1,4 @@
 ---
-# run locally here, yadda yadda yadda
 - hosts: "{{hosts}}"
   become: yes
   become_user: root
