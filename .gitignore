@@ -1,9 +1,6 @@
 # Virtual Environment files
 .venv
 
-# Vars files
-vars/
-
 # Retry files
 *.retry
 
